@@ -4,35 +4,45 @@
 This repository contains materials and code for the Lab Materia Condensata course. The course focuses on condensed matter physics and includes various experiments and simulations.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Experiments](#experiments)
-- [Simulations](#simulations)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Lab Materia Condensata](#lab-materia-condensata)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Experiments](#experiments)
+  - [Todo](#todo)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Introduction
 The Lab Materia Condensata course aims to provide hands-on experience with condensed matter physics. This repository includes all necessary resources, such as experiment protocols, data analysis scripts, and simulation codes.
 
 ## Experiments
-Detailed descriptions and protocols for each experiment can be found in the `experiments` directory. Each experiment folder contains:
-- Protocols
-- Data
-- Analysis scripts
+Detailed descriptions and protocols for each experiment can be found in the `Raw_Data` directory.
+The file name of each measure specifies some information of such measure, as an example `BB_RAD_300ms_700V_10p5tac_303Hz__5mil6mil_241024` means:
+| Field       | Description                        |
+|-------------|------------------------------------|
+| BB          | Experiment type                    |
+| RAD         | Measurement type                   |
+| 300ms       | Lockin integration time            |
+| 700V        | Voltage across the phototube       |
+| 10p5tac     | Opening of the slits               |
+| 303Hz       | Lock in frequency                  |
+| 5mil6mil    | Wavelenght range                   |
+| 241024      | Unique identifier or timestamp     |
 
-## Simulations
-The `simulations` directory contains code and resources for various simulations related to condensed matter physics. Each simulation folder includes:
-- Source code
-- Input files
-- Output data
+## Todo
+- [ ] The names of the measurements in the Field / Description model are inconsistent across different measurements.
+- [ ] Changed the folder structure, everything is broken for the moment. Fix it.
+- [ ] Add a python script that cleans the data and adds it in the correct folder.
 
 ## Installation
 To set up the environment for running the simulations and analysis scripts, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/Lab_Materia_Condensata.git
+    git clone https://github.com/zar-hub/Lab_Materia_Condensata.git
     ```
 2. Navigate to the repository directory:
     ```bash
