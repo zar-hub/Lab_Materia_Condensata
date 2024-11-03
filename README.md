@@ -17,6 +17,11 @@ This repository contains materials and code for the Lab Materia Condensata cours
 
 ## Introduction
 The Lab Materia Condensata course aims to provide hands-on experience with condensed matter physics. This repository includes all necessary resources, such as experiment protocols, data analysis scripts, and simulation codes.
+The script `cleaner_script.py` is a useful script to clean the data. After a measurement call 
+```bash
+python cleaner_script.py path/to/file
+```
+to clean the files located at `path/to/file` and save it (automatically) in `Clean_Data`. One needs to manually put them inside a folder.
 
 ## Experiments
 Detailed descriptions and protocols for each experiment can be found in the `Raw_Data` directory.
@@ -35,6 +40,8 @@ The file name of each measure specifies some information of such measure, as an 
 ## Todo
 - [ ] The names of the measurements in the Field / Description model are inconsistent across different measurements.
 - [ ] Changed the folder structure, everything is broken for the moment. Fix it.
+  - [x] Fix the notebook.
+  - [ ] Fix `modules.calibration` and `modules.responce`.
 - [ ] Add a python script that cleans the data and adds it in the correct folder.
 
 ## Installation

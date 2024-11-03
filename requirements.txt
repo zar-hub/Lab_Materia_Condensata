@@ -1,4 +1,5 @@
 anyio==4.6.2.post1
+argh==0.31.3
 argon2-cffi==23.1.0
 argon2-cffi-bindings==21.2.0
 arrow==1.3.0
