@@ -42,7 +42,8 @@ The file name of each measure specifies some information of such measure, as an 
 - [ ] Changed the folder structure, everything is broken for the moment. Fix it.
   - [x] Fix the notebook.
   - [ ] Fix `modules.calibration` and `modules.responce`.
-- [ ] Add a python script that cleans the data and adds it in the correct folder.
+- [x] Add a python script that cleans the data 
+  - [ ] and adds it in the correct folder.
 
 ## Installation
 To set up the environment for running the simulations and analysis scripts, follow these steps:

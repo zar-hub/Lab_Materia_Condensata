@@ -1,9 +1,29 @@
 import os
+import numpy as np
 import pandas as pd
 from pprint import pprint
 import sys
 
 _DEBUG = False
+
+# phyisical constants
+h = 6.62607015e-34  # J / Hz
+kb = 1.380649e-23   # J / K
+c = 299792458       # m / s
+hc = h * c
+
+def plank(wl, T):
+    '''
+    Returns the Plank's law of radiadiation density
+    by wavelenght.
+    wl : the wavelentgh in meters
+    T : temperature in K
+    '''
+    A = 2 * h * c ** 2
+    print(f'wl type is {type(wl)}')
+    
+    expm1 = np.expm1(hc / (wl * kb * T))
+    return A / (np.power(wl, 5) * expm1)
 
 def query_yes_no(question, default="yes"):
     """Ask a yes/no question via raw_input() and return their answer.
