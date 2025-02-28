@@ -64,7 +64,7 @@ def getFiles(path : str):
     full_path = os.path.join(cwd, path)
     files = os.scandir(full_path)
     # only return the files
-    files = [f for f in files if f.is_file()]
+    files = [f for f in files if f.is_file() and f.name.endswith('.csv')]
     return files
 
 def dfFormFiles(files : list, **opt):
@@ -84,3 +84,58 @@ def dfFormFiles(files : list, **opt):
     df = df.reset_index(drop=True)
     
     return df
+
+def token_parser(tokens : str):
+    '''Parses the token and returns the meta data'''
+    meta = dict()
+    tokens = tokens.split('_')
+    meta['type'] = tokens[0]
+    for token in tokens[1:]:
+        if token.find('K') != -1 or token.find('mV') != -1:
+            meta['temp'] = token
+        elif token.find('ms') != -1:
+            meta['integration time'] = token
+        elif token.find('V') != -1:
+            meta['PT tension'] = token
+        elif token.find('Out') != -1:
+            meta['output slit'] = token
+        elif token.find('In') != -1:
+            meta['input slit'] = token
+        elif token.find('Hz') != -1:
+            meta['lock freq'] = token
+        elif token.find('2024') != -1:
+            meta['date'] = token
+        else:
+            meta['id'] = token
+    
+    # tidy up the meta data
+    try:
+        meta['input slit'] = meta['input slit'][:-2]
+        meta['output slit'] = meta['output slit'][:-3]
+    except:
+        pass
+    
+    return meta
+
+def file_to_series(file : os.DirEntry):
+    '''Converts a file to a pandas series'''
+    data = np.genfromtxt(file.path, skip_header=1, dtype=np.float32)
+    # get the std
+    data[:,2] = data[:,2:].std(axis=1, ddof=1)
+    data = data[:,:3].T
+    
+    # get the meta data
+    tokens = file.name.removesuffix('.csv')
+    meta = token_parser(tokens)
+    
+    ser = pd.Series()
+    ser['type'] = meta['type']
+    ser['date'] = meta['date']
+    ser['id'] = meta['id']
+    ser['interval'] = [data[0,0], data[0,-1]]
+    ser['wl'] = data[0]
+    ser['mean'] = data[1]
+    ser['std'] = data[2]
+    ser['meta'] = str(meta)
+    
+    return ser

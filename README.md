@@ -29,18 +29,16 @@ The file name of each measure specifies some information of such measure, as an 
 | Field       | Description                        |
 |-------------|------------------------------------|
 | BB          | Experiment type                    |
-| RAD         | Measurement type                   |
 | 300ms       | Lockin integration time            |
 | 700V        | Voltage across the phototube       |
-| 10p5tac     | Opening of the slits               |
+| 10.5tac     | Opening of the slits               |
 | 303Hz       | Lock in frequency                  |
 | 5mil6mil    | Wavelenght range                   |
 | 241024      | Unique identifier or timestamp     |
 
 ## Todo
-- [ ] The names of the measurements in the Field / Description model are inconsistent across different measurements.
 - [ ] Changed the folder structure, everything is broken for the moment. Fix it.
-  - [x] Fix the notebook.
+  - [ ] Fix the notebook.
   - [ ] Fix `modules.calibration` and `modules.responce`.
 - [x] Add a python script that cleans the data 
   - [ ] and adds it in the correct folder.

@@ -126,9 +126,19 @@ def app(files : list | os.DirEntry):
     callback.load()
     plt.show()
     
+def print_header(script_name, folder_path):
+    header = f"""
+    ============================================
+    |          Experimental Data Cleaner        |
+    ============================================
+    Script: {script_name}
+    Folder: {folder_path}
+    ============================================
+    """
+    print(header)
+    
 def main(path : str, quiet = False):
-    print(f'script: {sys.argv[0]}')
-    print(f'looking at folder: {path}')
+    print_header(sys.argv[0], path)
     files = utils.getFiles(path)
     for f in files:
         print(f)
