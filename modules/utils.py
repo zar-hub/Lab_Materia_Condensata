@@ -63,6 +63,7 @@ def getFiles(path : str):
     cwd = os.getcwd()
     full_path = os.path.join(cwd, path)
     files = os.scandir(full_path)
+    
     # only return the files
     files = [f for f in files if f.is_file() and f.name.endswith('.csv')]
     return files
