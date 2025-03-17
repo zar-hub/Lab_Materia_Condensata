@@ -20,7 +20,6 @@ def plank(wl, T):
     T : temperature in K
     '''
     A = 2 * h * c ** 2
-    print(f'wl type is {type(wl)}')
     
     expm1 = np.expm1(hc / (wl * kb * T))
     return A / (np.power(wl, 5) * expm1)
@@ -118,9 +117,14 @@ def token_parser(tokens : str):
     
     return meta
 
-def file_to_series(file : os.DirEntry):
-    '''Converts a file to a pandas series'''
+def file_to_series(file : os.DirEntry, **opt):
+    ''' Converts a file to a pandas series
+        opt: 
+            - pfname : print the file name
+            - pmeta : print the meta data
+    '''
     data = np.genfromtxt(file.path, skip_header=1, dtype=np.float32)
+    
     # get the std
     data[:,2] = data[:,2:].std(axis=1, ddof=1)
     data = data[:,:3].T
@@ -138,5 +142,10 @@ def file_to_series(file : os.DirEntry):
     ser['mean'] = data[1]
     ser['std'] = data[2]
     ser['meta'] = str(meta)
+    
+    if opt.get('pfname', False):
+        print(file.name)
+    if opt.get('pmeta', False):
+        pprint(meta)
     
     return ser
