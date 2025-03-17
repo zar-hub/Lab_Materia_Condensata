@@ -3,27 +3,19 @@ import numpy as np
 import pandas as pd
 from pprint import pprint
 import sys
+from scipy.special import wofz
 
 _DEBUG = False
 
-# phyisical constants
+# CONSTANTS (SI UNITS)
 h = 6.62607015e-34  # J / Hz
 kb = 1.380649e-23   # J / K
 c = 299792458       # m / s
 hc = h * c
 
-def plank(wl, T):
-    '''
-    Returns the Plank's law of radiadiation density
-    by wavelenght.
-    wl : the wavelentgh in meters
-    T : temperature in K
-    '''
-    A = 2 * h * c ** 2
-    
-    expm1 = np.expm1(hc / (wl * kb * T))
-    return A / (np.power(wl, 5) * expm1)
-
+# HELPER FUNCTIONS
+# pandas helper functions, os path maniuplation
+# and CLI helpers
 def query_yes_no(question, default="yes"):
     """Ask a yes/no question via raw_input() and return their answer.
 
@@ -82,7 +74,6 @@ def dfFormFiles(files : list, **opt):
         tmp['meta'] = f.name
         df = df._append(tmp)
     df = df.reset_index(drop=True)
-    
     return df
 
 def token_parser(tokens : str):
@@ -114,7 +105,6 @@ def token_parser(tokens : str):
         meta['output slit'] = meta['output slit'][:-3]
     except:
         pass
-    
     return meta
 
 def file_to_series(file : os.DirEntry, **opt):
@@ -147,13 +137,11 @@ def file_to_series(file : os.DirEntry, **opt):
         print(file.name)
     if opt.get('pmeta', False):
         pprint(meta)
-    
     return ser
 
 # https://zhauniarovich.com/post/2022/2022-09-matplotlib-graphs-in-research-papers/
 def check_paths(in_paths, out_paths):
     import os, shutil, itertools
-
     for pth_key in in_paths:
         pth = in_paths[pth_key]
         if not os.path.exists(pth):
@@ -170,3 +158,51 @@ def check_paths(in_paths, out_paths):
         if not os.path.exists(abs_path):
             print(f'Creating path: [{abs_path}]')
             os.makedirs(abs_path)
+            
+# IGOR VOIGT FUNCTION WRAPPING
+# from CHATGPT but checked for correctness
+def voigt_func(x, shape_factor):
+    """
+    Computes the Voigt function as the real part of the Faddeeva function.
+    :param x: Input wave (numpy array)
+    :param shape_factor: Determines the Gaussian-Lorentzian mix.
+    :return: Voigt peak values.
+    """
+    return np.real(wofz(x + 1j * shape_factor))
+
+def mpfx_voigt_peak(cw, xw):
+    """
+    Computes a Voigt peak function and fills yw with computed values.
+    :param cw: Coefficient wave (array-like of length 4)
+               cw[0]: Peak location
+               cw[1]: Width-affecting factor
+               cw[2]: Amplitude factor
+               cw[3]: Shape factor (0 = Gaussian, Inf = Lorentzian, sqrt(ln(2)) = 50/50)
+    :param xw: X values where the function is evaluated
+    :return: 0 if successful, NaN if input is invalid
+    """
+    try:
+        # Validate input
+        cw = np.asarray(cw, dtype=np.float64)
+        xw = np.asarray(xw, dtype=np.float64)
+        if len(cw) != 4:
+            return np.nan
+        
+        # Compute the Voigt peak values
+        return cw[2] * voigt_func(cw[1] * (xw - cw[0]), cw[3])
+        
+    except Exception:
+        return np.nan  # Return NaN on failure
+
+# PHYSICS FUNCTIONS
+def plank(wl, T):
+    '''
+    Returns the Plank's law of radiadiation density
+    by wavelenght.
+    wl : the wavelentgh in meters
+    T : temperature in K
+    '''
+    A = 2 * h * c ** 2
+    
+    expm1 = np.expm1(hc / (wl * kb * T))
+    return A / (np.power(wl, 5) * expm1)
