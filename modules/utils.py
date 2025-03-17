@@ -149,3 +149,24 @@ def file_to_series(file : os.DirEntry, **opt):
         pprint(meta)
     
     return ser
+
+# https://zhauniarovich.com/post/2022/2022-09-matplotlib-graphs-in-research-papers/
+def check_paths(in_paths, out_paths):
+    import os, shutil, itertools
+
+    for pth_key in in_paths:
+        pth = in_paths[pth_key]
+        if not os.path.exists(pth):
+            print(f'Path [{pth}] does not exist')
+        if pth_key.endswith('_dir') and (not os.path.isdir(pth)):
+            print(f'Path [{pth}] does not correspond to a directory!')
+
+    for pth_key in out_paths:
+        pth = out_paths[pth_key]
+        if pth_key.endswith('_dir'):
+            abs_path = os.path.abspath(pth)
+        else:
+            abs_path = os.path.abspath(os.path.dirname(pth))
+        if not os.path.exists(abs_path):
+            print(f'Creating path: [{abs_path}]')
+            os.makedirs(abs_path)
