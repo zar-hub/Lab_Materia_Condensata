@@ -1,4 +1,5 @@
 import os
+import matplotlib.figure
 import numpy as np
 import pandas as pd
 from pprint import pprint
@@ -162,7 +163,7 @@ def check_paths(in_paths, out_paths):
             os.makedirs(abs_path)
 
 def save_fig(
-        fig: matplotlib.figure.Figure, 
+        fig, 
         fig_name: str, 
         fig_dir: str, 
         fig_fmt: str,
