@@ -99,6 +99,8 @@ def token_parser(tokens : str):
             meta['lock freq'] = token
         elif token.find('2024') != -1:
             meta['date'] = token
+        elif token.find('A') != -1:
+            meta['pos'] = token
         else:
             meta['id'] = token
     
@@ -280,3 +282,35 @@ def plank(wl, T):
     
     expm1 = np.expm1(hc / (wl * kb * T))
     return A / (np.power(wl, 5) * expm1)
+
+
+from math import floor, log10
+
+
+def display_sigfig(x, sigfigs=2) -> str:
+    '''
+    Suppose we want to show 2 significant figures. Implicitly we want to show 3 bits of information:
+    - The order of magnitude
+    - Significant digit #1
+    - Significant digit #2
+    '''
+
+    
+    if sigfigs < 1:
+        raise Exception('Cannot have fewer than 1 significant figures. ({} given)'.format(sigfigs))
+
+    order_of_magnitude = floor(log10(abs(x)))
+
+    # Because we get one sigfig for free, to the left of the decimal
+    decimals = (sigfigs - 1)
+
+    x /= pow(10, order_of_magnitude)
+    x = round(x, decimals)
+    x *= pow(10, order_of_magnitude)
+
+    # Subtract from decimals the sigfigs we get from the order of magnitude
+    decimals -= order_of_magnitude
+    # But we can't have a negative number of decimals
+    decimals = max(0, decimals)
+
+    return '{:,.{dec}f}'.format(x, dec=decimals)
