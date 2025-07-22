@@ -1,0 +1,11 @@
+\begin{tabular}{lllrrlllllr}
+\toprule
+type & id & date & integration time & PT tension & slits & lock freq & start & stop & step & points \\
+\midrule
+LSR & 001 & 29-10 & 300 & 400 & 1, 1 & 307 & 631.030 & 634.000 & 0.030 & 99 \\
+LSR & 002 & 29-10 & 300 & 400 & 1, 1 & 307 & 632.511 & 634.500 & 0.011 & 179 \\
+LSR & 002 & 07-11 & 300 & 500 & 1, 2 & 307 & 632.728 & 634.010 & 0.008 & 164 \\
+LSR & 003 & 07-11 & 300 & 500 & 1, 2 & 307 & 632.748 & 634.040 & 0.008 & 164 \\
+LSR & 001 & 07-11 & 300 & 500 & 2, 2 & 307 & 632.718 & 634.000 & 0.008 & 164 \\
+\bottomrule
+\end{tabular}

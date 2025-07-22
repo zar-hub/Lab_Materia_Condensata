@@ -1,0 +1,65 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Dec 19 15:02:13 2024
+
+@author: HREELS
+"""
+
+#%%
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import os 
+from os.path import join, isfile
+import re
+
+# === generate the dataset with the wanted files ===
+_root = os.getcwd()
+_scans = _root 
+
+# EDIT THE FOLDERS THAT MUST BE INCLUDED
+folders = ('12_12_2024', '17_12_2024', '19_12_2024', '20_12_2024',)
+df = pd.DataFrame()
+
+#%% Start Acquisition
+for _folder in folders:
+    _folder_path = join(_scans, _folder) 
+    
+    print(f'File in folder {_folder}:')
+    for file in os.listdir(_folder_path):
+        if re.match('^Ag111', file) is not None:
+            print(file, sep='\t')
+            splitted = file.split(sep='_')
+            
+            # assemble the fileds 
+            _sample_types = ['PTCDI', 'IPRPTCDI']
+            mydf = pd.DataFrame({
+                'sample' : [splitted[1] if splitted[1] in _sample_types else splitted[0]],
+                'run' : [splitted[-1]],
+                'date' : [_folder],
+                'spectre' : [''],
+                'meta' : ['']
+            })
+                
+            # get the meta from the first line
+            with open(join(_folder_path, file), 'r') as file_handler:
+                line = file_handler.readline()
+                match = re.match('^{.*}', line)
+                
+                if match is not None:
+                    mydf['meta'] = match.group(0)
+                   
+                    # get the first two numbers
+                    array = [ i for i in match.string[match.end(0):].split() ]
+                    array = array +  [ float(i) for i in  file_handler.read().split() ]
+                    array = np.reshape(array, (-1, 2)).T
+                    array
+                    print(array)
+
+                    # add the array to the df
+                    mydf['spectre'] = [array]
+                
+            # load in the DF
+            df = pd.concat([df, mydf], ignore_index=True)
+print(df)
+df.to_csv('dataframe')

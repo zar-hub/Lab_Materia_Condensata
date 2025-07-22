@@ -1,0 +1,25 @@
+indx,sample,run,date,acq_time_[s],V_start_[V],V_end_[V],V_step_[V],notes,size
+1,Ag111,39,12_12_2024,3,-5.7,-5,0.005,calbration run,141
+2,Ag111,40,12_12_2024,3,-5.7,-3,0.01,calbration run,270
+5,Ag111,3,17_12_2024,3,-5.7,-4.5,0.01,calbration run,121
+23,Ag111,3,19_12_2024,2,-5.9,-4,0.01,calbration run,191
+24,IPRPTCDI,1,19_12_2024,3,-5.9,-2,0.01,after first deposition,390
+25,IPRPTCDI,10,19_12_2024,10,-5.25,-2,0.01,"Counts were diminishing, lost 600 events in elastic peak",325
+26,IPRPTCDI,11,19_12_2024,10,-5.25,-2,0.01,"Counts were diminishing, lost 600 events in elastic peak",325
+32,IPRPTCDI,2,19_12_2024,3,-5.9,-2,0.01,after first deposition,176
+34,IPRPTCDI,4,19_12_2024,3,-5.9,-2,0.01,"Counts were diminishing, lost 600 events in elastic peak",227
+36,IPRPTCDI,6,19_12_2024,3,-5.7,-2,0.01,"Counts were diminishing, lost 600 events in elastic peak",370
+37,IPRPTCDI,7,19_12_2024,10,-5.25,-2,0.01,"Counts were diminishing, lost 600 events in elastic peak",325
+38,IPRPTCDI,8,19_12_2024,10,-5.25,-2,0.01,"Counts were diminishing, lost 600 events in elastic peak",325
+39,IPRPTCDI,9,19_12_2024,10,-5.25,-2,0.01,"Counts were diminishing, lost 600 events in elastic peak",325
+41,IPRPTCDI,2,20_12_2024,3,-5.62,-2,0.005,,223
+43,IPRPTCDI,4,20_12_2024,3,-5.45,-5.2,0.002,Triple peaks detail,125
+44,IPRPTCDI,5,20_12_2024,3,-5.45,-5.2,0.002,Triple peaks detail,125
+6,PTCDI,1,17_12_2024,3,-5.7,-4.5,0.01,calbration run,121
+7,PTCDI,10,17_12_2024,10,-5.23,-2,0.01,calbration run,324
+8,PTCDI,11,17_12_2024,10,-5.23,-2,0.01,calbration run,324
+9,PTCDI,12,17_12_2024,10,-5.23,-2,0.01,calbration run,324
+18,PTCDI,6,17_12_2024,3,-5.7,-2,0.01,calbration run,370
+19,PTCDI,7,17_12_2024,10,-5.23,-2,0.01,calbration run,324
+20,PTCDI,8,17_12_2024,10,-5.23,-2,0.01,calbration run,324
+21,PTCDI,9,17_12_2024,10,-5.23,-2,0.01,calbration run,324
