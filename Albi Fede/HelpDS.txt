@@ -1,0 +1,326 @@
+•	XPSdoniachs
+Friedrich Esch, 6/2/1997
+
+The XPSdoniachs XOP, which contains both PowerPC and 68k(FPU) code, adds the following XFUNCs to Igor:
+
+dsgn(w, x)
+Supplied by the XPSdoniachs XOP.
+Doniach-Sunjic function with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule).
+
+w[0]:	background interceipt at the peak position
+w[1]:	background slope
+w[2]:	lorentzian linewidth (FWHM)
+w[3]:	asymmetry parameter
+w[4]:	gaussian linewidth (FWHM)
+w[5]:	intensity (function is not normalized)
+w[6]:	binding energy(negative  values)
+
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnnb(w, x)
+Supplied by the XPSdoniachs XOP.
+Doniach-Sunjic function without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule).
+
+w[0]:	lorentzian linewidth (FWHM)
+w[1]:	asymmetry parameter
+w[2]:	gaussian linewidth (FWHM)
+w[3]:	intensity (function is not normalized)
+w[4]:	binding energy(negative  values)
+
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBas(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same lineshape with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule).
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	lorentzian linewidth (FWHM)
+w[3]:	asymmetry parameter
+w[4]:	gaussian linewidth (FWHM)
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	intensity peak2 (function is not normalized)
+w[8]:	binding energy peak2 (negative  values)
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBasnb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same lineshape without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule).
+
+w[0]:	lorentzian linewidth (FWHM)
+w[1]:	asymmetry parameter
+w[2]:	gaussian linewidth (FWHM)
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	intensity peak2 (function is not normalized)
+w[6]:	binding energy peak2 (negative  values)
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEas(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same lineshape with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak.
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	lorentzian linewidth (FWHM)
+w[3]:	asymmetry parameter
+w[4]:	gaussian linewidth (FWHM)
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	intensity peak2 (function is not normalized)
+w[8]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[6]-w[8])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEasnb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same lineshape without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak.
+
+w[0]:	lorentzian linewidth (FWHM)
+w[1]:	asymmetry parameter
+w[2]:	gaussian linewidth (FWHM)
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	intensity peak2 (function is not normalized)
+w[6]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[4]-w[6])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBgs(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same gaussian, but different lorentzian and asymmetry lineshape with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule).
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	gaussian linewidth (FWHM)
+w[3]:	lorentzian linewidth peak1 (FWHM)
+w[4]:	asymmetry parameter peak 1
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	lorentzian linewidth peak2 (FWHM)
+w[8]:	asymmetry parameter peak 2
+w[9]:	intensity peak2 (function is not normalized)
+w[10]:	binding energy peak2
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBgsnb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same gaussian, but different lorentzian and asymmetry lineshape without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule).
+
+w[0]:	gaussian linewidth (FWHM)
+w[1]:	lorentzian linewidth peak1 (FWHM)
+w[2]:	asymmetry parameter peak 1
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	lorentzian linewidth peak2 (FWHM)
+w[6]:	asymmetry parameter peak 2
+w[7]:	intensity peak2 (function is not normalized)
+w[8]:	binding energy peak2
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEgs(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same gaussian, but different lorentzian and asymmetry lineshape with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak.
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	gaussian linewidth (FWHM)
+w[3]:	lorentzian linewidth peak1 (FWHM)
+w[4]:	asymmetry parameter peak 1
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	lorentzian linewidth peak2 (FWHM)
+w[8]:	asymmetry parameter peak 2
+w[9]:	intensity peak2 (function is not normalized)
+w[10]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[6]-w[10])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEgsnb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of the same gaussian, but different lorentzian and asymmetry lineshape without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak.
+
+w[0]:	gaussian linewidth (FWHM)
+w[1]:	lorentzian linewidth peak1 (FWHM)
+w[2]:	asymmetry parameter peak 1
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	lorentzian linewidth peak2 (FWHM)
+w[6]:	asymmetry parameter peak 2
+w[7]:	intensity peak2 (function is not normalized)
+w[8]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[4]-w[8])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBad1(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The convolution is done all in one loop with the step integration width adapted for the largest peak. This function is slow if the peak width's of the different peaks differ very much (see in this case dsgnmBad2 function).
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	lorentzian linewidth peak1 (FWHM)
+w[3]:	asymmetry parameter peak 1
+w[4]:	gaussian linewidth peak1 (FWHM)
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	lorentzian linewidth peak2 (FWHM)
+w[8]:	asymmetry parameter peak 2
+w[9]:	gaussian linewidth peak2 (FWHM)
+w[10]:	intensity peak2 (function is not normalized)
+w[11]:	binding energy peak2
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBad1nb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The convolution is done all in one loop with the step integration width adapted for the largest peak. This function is slow if the peak width's of the different peaks differ very much (see in this case dsgnmBad2nb function).
+
+w[0]:	lorentzian linewidth peak1 (FWHM)
+w[1]:	asymmetry parameter peak 1
+w[2]:	gaussian linewidth peak1 (FWHM)
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	lorentzian linewidth peak2 (FWHM)
+w[6]:	asymmetry parameter peak 2
+w[7]:	gaussian linewidth peak2 (FWHM)
+w[8]:	intensity peak2 (function is not normalized)
+w[9]:	binding energy peak2
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEad1(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak. The convolution is done all in one loop with the step integration width adapted for the largest peak. This function is slow if the peak width's of the different peaks differ very much (see in this case dsgnmEad2 function).
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	lorentzian linewidth peak1 (FWHM)
+w[3]:	asymmetry parameter peak 1
+w[4]:	gaussian linewidth peak1 (FWHM)
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	lorentzian linewidth peak2 (FWHM)
+w[8]:	asymmetry parameter peak 2
+w[9]:	gaussian linewidth peak2 (FWHM)
+w[10]:	intensity peak2 (function is not normalized)
+w[11]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[6]-w[10])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEad1nb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak. The convolution is done all in one loop with the step integration width adapted for the largest peak. This function is slow if the peak width's of the different peaks differ very much (see in this case dsgnmEad2nb function).
+
+w[0]:	lorentzian linewidth peak1 (FWHM)
+w[1]:	asymmetry parameter peak 1
+w[2]:	gaussian linewidth peak1 (FWHM)
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	lorentzian linewidth peak2 (FWHM)
+w[6]:	asymmetry parameter peak 2
+w[7]:	gaussian linewidth peak2 (FWHM)
+w[8]:	intensity peak2 (function is not normalized)
+w[9]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[4]-w[8])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBad2(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The convolution is done in subsequent loops with different step widths (try eventually also dsgnmBad1 function).
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	lorentzian linewidth peak1 (FWHM)
+w[3]:	asymmetry parameter peak 1
+w[4]:	gaussian linewidth peak1 (FWHM)
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	lorentzian linewidth peak2 (FWHM)
+w[8]:	asymmetry parameter peak 2
+w[9]:	gaussian linewidth peak2 (FWHM)
+w[10]:	intensity peak2 (function is not normalized)
+w[11]:	binding energy peak2
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmBad2nb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The convolution is done in subsequent loops with different step widths (try eventually also dsgnmBad1nb function).
+
+w[0]:	lorentzian linewidth peak1 (FWHM)
+w[1]:	asymmetry parameter peak 1
+w[2]:	gaussian linewidth peak1 (FWHM)
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	lorentzian linewidth peak2 (FWHM)
+w[6]:	asymmetry parameter peak 2
+w[7]:	gaussian linewidth peak2 (FWHM)
+w[8]:	intensity peak2 (function is not normalized)
+w[9]:	binding energy peak2
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEad2(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes with linear background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak. The convolution is done in subsequent loops with different step widths (try eventually also dsgnmEad1 function).
+
+w[0]:	background interceipt at position of peak1
+w[1]:	background slope
+w[2]:	lorentzian linewidth peak1 (FWHM)
+w[3]:	asymmetry parameter peak 1
+w[4]:	gaussian linewidth peak1 (FWHM)
+w[5]:	intensity peak1 (function is not normalized)
+w[6]:	binding energy peak1 (negative  values)
+w[7]:	lorentzian linewidth peak2 (FWHM)
+w[8]:	asymmetry parameter peak 2
+w[9]:	gaussian linewidth peak2 (FWHM)
+w[10]:	intensity peak2 (function is not normalized)
+w[11]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[6]-w[10])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
+
+dsgnmEad2nb(w, x)
+Supplied by the XPSdoniachs XOP.
+Multiple Doniach-Sunjic functions of different lineshapes without background (programmed after J.J.Joyce, M.Del Giudice and J.H.Weaver, "Quantitative Analysis of Synchrotron Radiation Photoemission Core Level Data", J.Electr.Spectrosc.Relat.Phenom. 49(1989)31-45. - integration by Simpson's rule). The binding energies of the peaks are referenced to the first peak. The convolution is done in subsequent loops with different step widths (try eventually also dsgnmEad1nb function).
+
+w[0]:	lorentzian linewidth peak1 (FWHM)
+w[1]:	asymmetry parameter peak 1
+w[2]:	gaussian linewidth peak1 (FWHM)
+w[3]:	intensity peak1 (function is not normalized)
+w[4]:	binding energy peak1 (negative  values)
+w[5]:	lorentzian linewidth peak2 (FWHM)
+w[6]:	asymmetry parameter peak 2
+w[7]:	gaussian linewidth peak2 (FWHM)
+w[8]:	intensity peak2 (function is not normalized)
+w[9]:	binding energy peak2 relative to peak1
+				(abs. binding energy peak2: w[4]-w[8])
+.
+.
+Note: the intensities are used in their absolute value to avoid negative values.
